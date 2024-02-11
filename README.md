@@ -17,12 +17,12 @@ Add your answers to this markdown file.
 
 1. Constant factors that are disregarded during analysis can make a difference in actual performance between algorithms.
 2. The type of machine you are working with and the implementation can make a large difference. On different machines or languages, it may be faster or shorter.
-3. The input size also matters, especially with smaller inputs. With $\O$, there is an input size that will mark the upper bound. Below that input size,
+3. The input size also matters, especially with smaller inputs. With $O$, there is an input size that will mark the upper bound. Below that input size,
     another algorithm may be more efficient. So the size of the input matters up to a certain point.
 
 If we find an element in a binary search tree with 1,000 element in 5 seconds, and the asymptotic complexity of searching a binary
-search tree is $\O(\log_2 n)$ , then that growth will still be logarithmic. 5 seconds / log (1000) = x / log(10000)
-So to get x, 5 * log(10000) / log(1000), which comes out to (66.435 / 9.96), or around 6.67 seconds. So it would take 6.67 seconds to 
+search tree is $O(\log_2 n)$ , then that growth will still be logarithmic. 5 seconds / $log_2 (1000)$ = x / $log_2 (10000)$
+So to get x, 5 * $log_2 (10000)$ / $log_2 (1000)$, which comes out to (66.435 / 9.96), or around 6.67 seconds. So it would take 6.67 seconds to 
 find the same element in a 10,000 tree.
 
 If it took 100 seconds it could be because...
