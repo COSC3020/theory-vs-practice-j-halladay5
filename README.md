@@ -29,9 +29,10 @@ If it took 100 seconds it could be because...
 1. When we added 9,000 elements the tree may not still be balanced (if it ever was). The height of the subtrees could be completely different. Because the time to search the binary tree is
    dependent on the height of the subtree it exists in, if its in a subtree that is very skewed and unbalanced (like a chain) it will take longer. My reasoning behind this is because instead of with a
    node with two children where the number of comparisons possible is cut in half annd it grows logarithmically, a chain only has one child, so the comparisons made only decreased by one. So it would be
-   more linear.
+   more linear. This would be a worst case scenario.
 2. Asymptotic complexity only considers the algorithm and not the machine you run it on. If the first time you run it on a computer with multiple cores, a powerful processor and CPU, and tons of storage
    it will run much better than if you used a $150 computer from walmart that takes 20 seconds to open a tab the second time. If the computer doesn't have enough memory or the processor is slow it could
    take much longer. Asymptotic complexity doesn't account for inefficient hardware. The $150 laptop probably would've crashed anyway.
 3. The structure of the tree has changed and we don't know what the values of the elements are. If the element we are searching for was near the root of the binary tree, and it rebalanced itself,
-   it may have been pushed to a much farther down subtree. This would especially be the case if the element we are searching for is now at the high end or low end, or the very bottom left, or very bottom right of    the tree.
+   it may have been pushed to a much farther down subtree. We also don't know what kind of elements were added to the tree. They could be strings, objects, or numbers. If the binary search tree was implemented
+   so that objects are compared, or strings are compared, then it will be slower. 
