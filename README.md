@@ -26,11 +26,18 @@ So to get x, 5 * $log_2 (10000)$ / $log_2 (1000)$, which comes out to (66.435 / 
 find the same element in a 10,000 tree.
 
 If it took 100 seconds it could be because...
-1. A binary search tree is not by defintion full or balanced. The number of comparisons is dependent on the height of the subtree it exists in, if its in a subtree that is very skewed and unbalanced, more specifically a chain then the comaprisons it will need to make is however many elements are before it. My reasoning behind this is because instead of a node with two children where the number of comparisons possible is cut in half and run time grows logarithmically, a chain only has one child. So if the element ends up being at the end of a long chain, the amount of comparisons it needs to make is linear. This is the worst case of an unbalanced, binary search tree. Making sure that my argument is correct I looked up the runtime for a skewed, binary tree. https://www.geeksforgeeks.org/complexity-different-operations-binary-tree-binary-search-tree-avl-tree/
-   So doing the math behind it, $$\ 5/ log_2 (1000) = x / 10,000 = 50,000/log_2(1000) = 5000$$, so this is definetly a possibility.
+
+1. Implementation can affect asymptotic analysis. If the tree is unbalanced and skewed and is not implemented to correct itself, then the asymptotic complexity changes. The asymptotic complexity for a binary tree is $\ O(log n)$ when it is balanced,
+    but in the case of an unbalanced, binary search tree the asymptotic complexity changes to linear time, much slower than $\ O(log n)$. Making sure that my argument is correct I looked up the runtime for a skewed, binary tree.   https://www.geeksforgeeks.org/complexity-different-operations-binary-tree-binary-search-tree-avl-tree/
+An additional implementation change is the language or ALU that the program was run with. If those elements are objects or strings, they will take longer to compare compared to integers. Some ALUs differ in operation times. Comparing 2 (8-bit) positive numbers
+is different than comparing 2 (8-bit) negative numbers. With strings, if the lengths of the same then the computer goes character by character comparing to see if they are equivalent, or if one is of greater value than the other. With objects, if we
+happen to be looking at a variable within certain objects, we will need to use a method to obtain the number first. Different languages implement in different ways as well. All of these add to the run time that we don't see or may disregard. 
+  
 3. Asymptotic complexity only considers the algorithm and not the machine you run it on. If the first time you run it on a computer with multiple cores, a powerful processor and CPU, and tons of storage
    it will run much better than if you used a $150 computer from walmart that takes 20 seconds to open a tab the second time. If the computer doesn't have enough memory or the processor is slow it could
    take much longer. Asymptotic complexity doesn't account for inefficient hardware. The $150 laptop probably would've crashed anyway.
-4. The structure of the tree has changed and we don't know what the values of the elements are. If the element we are searching for was near the root of the binary tree, and it rebalanced itself,
-   it may have been pushed to a much farther down subtree. We also don't know what kind of elements were added to the tree. They could be strings, objects, or numbers. If the binary search tree was implemented
-   so that objects are compared, or strings are compared, then it will be slower. 
+   
+4. With $\O$ we omit the constant factors when determining the asymptotic complexity. Although we estimate the run time to be 6.67 seconds, the constant factor is not included in that. The constant factor that was omitted could affect
+   our actual run time. If the constant factor was somewhere around 15, then the time it would take would be around 100 seconds. 
+
+   Sources used: TA
