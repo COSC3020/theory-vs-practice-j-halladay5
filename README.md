@@ -27,17 +27,27 @@ find the same element in a 10,000 tree.
 
 If it took 100 seconds it could be because...
 
-1. Implementation can affect asymptotic analysis. If the tree is unbalanced and skewed and is not implemented to correct itself, then the asymptotic complexity changes. The asymptotic complexity for a binary tree is $\ O(log n)$ when it is balanced,
-    but in the case of an unbalanced, binary search tree the asymptotic complexity changes to linear time, much slower than $\ O(log n)$. Making sure that my argument is correct I looked up the runtime for a skewed, binary tree.   https://www.geeksforgeeks.org/complexity-different-operations-binary-tree-binary-search-tree-avl-tree/
-An additional implementation change is the language or ALU that the program was run with. If those elements are objects or strings, they will take longer to compare compared to integers. Some ALUs differ in operation times. Comparing 2 (8-bit) positive numbers
-is different than comparing 2 (8-bit) negative numbers. With strings, if the lengths of the same then the computer goes character by character comparing to see if they are equivalent, or if one is of greater value than the other. With objects, if we
-happen to be looking at a variable within certain objects, we will need to use a method to obtain the number first. Different languages implement in different ways as well. All of these add to the run time that we don't see or may disregard. 
+1. Implementation can affect asymptotic analysis. The asymptotic analysis for a binary search tree is log n, but we don't know whether the implementation used is as efficient as log n. In the first time, it may
+   be that the element was near the root of the tree. If we assume decent implementation and the best case scenario, it shouldn't have taken 5 seconds to find it. This implies that the implementation is extremely
+   inefficient even for the best cases. In this case, an average case /worst case would take around 50 seconds. If we add 9,000 elements to that, the worst/average case takes much longer. The best case could be      6.667 for O(1), but the worst case where the height is around 13-14 depending on where it's at would account for a runtime of 100 seconds. In summary, tf the best case, or near best case scenario took 5       
+   seconds due to bad implementation, then the worst, or even average case of 10,000 elements would take much longer which can create a runtime of 100 seconds.
   
-3. Asymptotic complexity only considers the algorithm and not the machine you run it on. If the first time you run it on a computer with multiple cores, a powerful processor and CPU, and tons of storage
-   it will run much better than if you used a $150 computer from walmart that takes 20 seconds to open a tab the second time. If the computer doesn't have enough memory or the processor is slow it could
-   take much longer. Asymptotic complexity doesn't account for inefficient hardware. The $150 laptop probably would've crashed anyway.
+2. Asymptotic complexity only considers the algorithm and not the machine you run it on. It's possible that the algorithm was run on different machines the first and second time and the hardware in those machines
+   are different, or the value types were different. Asymptotic complexity also assumes that an action takes the same amount of time every time you do it. For the time complexity of a binary tree,
+   we assume that each comparison takes the same amount of time every time. This may not be the case because of the difference in machine hardware. It's possible the first time the machine had an FPU, and the
+   second time the machine didn't have an FPU. This would account for the time difference because even though ALUs can perform floating point subtraction, it takes much longer than an FPU does. This, also paired
+   with the fact that it may have to make more comparisons due to a larger amount of input would account for the difference in time. This general reason can also be applied to value types. Floating point values
+   will take more time to compare than integers, and strings will take longer to compare than characters. It could be that the first tree had only integers, but floating points were added, or even that the first
+   tree had only characters, and then strings were added. This is especially the case if two long strings are compared because they compare character by character.
    
-4. With $\O$ we omit the constant factors when determining the asymptotic complexity. Although we estimate the run time to be 6.67 seconds, the constant factor is not included in that. The constant factor that was omitted could affect
-   our actual run time. If the constant factor was somewhere around 15, then the time it would take would be around 100 seconds. 
+3. Another reason asymptotic complexity can be misleading that it doesn't account for anything other than the algorithm. This includes not having enough memory available becuase of other programs, switching
+   the memory from virtual memory to the disk, or even having a better virtual machine. A tree with 1,000 elements is not going to need as much memory as a tree with 10,000 elements. Depending on the hardware
+   the algorithm is run on, the program may not have sufficient memory to handle a tree with 10,000 elements, and may need to switch to the disk to store those elements as needed. Memory on the disk is much slower
+   and could account for the unexpected increase in runtime. A machine only has a certain amount of RAM and virtual memory that this switch may be needed inorder to keep the values from being overwritten or
+    corrupted. Another constraint on time complexity in terms of memory may be that there are other programs are utilizing the CPU or memory during runtime. This can lead to the program waiting to utilize the
+   CPU. Different CPUs can run faster or slower, also further increasing or decreasing the runtime. In addition to this, the value of $\ n_0$ is also important in time complexity. It could be that for the
+   first run, the input of 1,000 elements was below $\ n_0$, so it doesn't follow the asymptotic runtime meaning the runtime can tell us nothing valuable about it. For the second run, 10,000 elements could be past
+   $\ n_0$, so the asymptotic complexity follows $\ O(log n)$.
+   
 
    Sources used: TA
