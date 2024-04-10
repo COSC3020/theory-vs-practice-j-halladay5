@@ -15,10 +15,15 @@
 
 Add your answers to this markdown file.
 
-1. Constant factors that are disregarded during analysis can make a difference in actual performance between algorithms.
-2. The type of machine you are working with and the implementation can make a large difference. On different machines or languages, it may be faster or shorter.
+1. Lower order terms that are disregarded during analysis can make a difference in actual performance between algorithms. When we are finding the runtime, we may have smaller terms such as in this example,
+    $\ n^2 + 5n + 3$. In asymptotic analysis we drop the lower order terms and constants, meaning that the asymptotic complexity is $\ n^5 $.
+2. Asymptotic analysis assumes that all constants take the same amount of time. In actual process, constants take different amounts of time, even though they may look the same on the screen. For example,  
+   comparing integers takes less time than comparing strings. This also accounts for hardware differences. Although having different hardware would be a disregarded constant, we can't always know that all
+   constants take the exact same amount of time for each machine. A machine may not have an FPU for floating point numbers, taking much more time when operating on them.
 3. The input size also matters, especially with smaller inputs. With $O$, it bounds the running time for large enough inputs after a certain input n0. With inputs smaller than
    n0, it may not be as fast or efficient as other algorithms may be at a small size. In performance, a different algorithm may be better.
+4. This also ties into the 3rd reason, but O is a loose bound. As long as it fulfills the definition, then it's a function in O. In theory, we can
+   say that $\ f(n) \in O(n^2), f(n) \in O(n^3), f(n) \in O(2^n) $. Although this may be true, it tells us very little. It is more useful to get a tighter O bound, but it is technically correct.
 
 If we find an element in a binary search tree with 1,000 element in 5 seconds, and the asymptotic complexity of searching a binary
 search tree is $O(\log_2 n)$ , then that growth will still be logarithmic. 5 seconds / $log_2 (1000)$ = x / $log_2 (10000)$
