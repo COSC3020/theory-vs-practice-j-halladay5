@@ -55,4 +55,4 @@ If it took 100 seconds it could be because...
    $\ n_0$, so the asymptotic complexity follows $\ O(log n)$.
    
 
-   Sources used: TA
+   Sources used: TA, Discussed in Class ideas
